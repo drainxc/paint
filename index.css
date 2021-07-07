@@ -2,10 +2,18 @@ canvas {
     border-radius: 24px;
     background-color: white;
 }
+
 main {
     display: flex;
     justify-content: center;
 }
+
 body {
     background-color: whitesmoke;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

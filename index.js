@@ -5,15 +5,17 @@ const size = document.getElementById('size');
 const brush = document.getElementById('brush');
 const eraser = document.getElementById('eraser');
 const fill = document.getElementById('fill');
+const reset = document.getElementById('reset');
 
 size.innerHTML = `${document.getElementById('brushControl').value}`;
 canvas.width = 600;
 canvas.height = 700;
 ctx.strokeStyle = "black";
 ctx.fillStyle = "white";
-ctx.fillRect(0,0,600,700);
+ctx.fillRect(0, 0, 600, 700);
 let painting = false;
 ctx.lineWidth = 10;
+
 
 function start() {
     painting = true;
@@ -47,9 +49,27 @@ function eraserTool() {
     ctx.fillStyle = "white";
 }
 
-canvas.addEventListener("mousemove" , onMove); 
-canvas.addEventListener("mousedown" , start); 
-canvas.addEventListener("mouseup" , stop); 
-canvas.addEventListener("mouseleave" , stop);
+function brushTool() {
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "black";
+}
+
+function fillTool() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 600, 700);
+}
+
+function resetTool() {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, 600, 700);
+}
+
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", start);
+canvas.addEventListener("mouseup", stop);
+canvas.addEventListener("mouseleave", stop);
 brushControl.addEventListener("input", range);
 eraser.addEventListener('click', eraserTool);
+brush.addEventListener('click', brushTool);
+fill.addEventListener('click', fillTool);
+reset.addEventListener('click', resetTool);
