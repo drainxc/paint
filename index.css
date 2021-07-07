@@ -3,17 +3,42 @@ canvas {
     background-color: white;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-}
-
 body {
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
 }
 
-img {
+main {margin-left: 250px;
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+button {
+    margin: 2.5px;
+    border-radius: 5px;
+    width: 32px;
+    background-color: white;
+}
+
+header {
+    margin: 30px;
+}
+
+#tool {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(170, 170, 170);
+    border-radius: 10px;
+}
+
+.toolList {
+    border-radius: 5px;
+    color: white;
+    font-weight: 1000;
+}
+
+#size {
+    font-size: large;
+    font-weight: 1000;
 }

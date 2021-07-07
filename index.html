@@ -11,23 +11,37 @@
 
 <body>
     <header>
-        <input id="brushControl" value="10" type="range">
-        <h2 id="size"></h2>
+        <div>
+            <input id="brushControl" value="10" type="range">
+            <a id="size"></a>
+        </div>
+        <div id="tool">
+            <div class="toolName">
+                <button id="brush">
+                    <img src="./asset/paint-brush.png" alt="">
+                </button>
+                <span class="toolList">브러시</span>
+            </div>
+            <div class="toolName">
+                <button id="eraser">
+                    <img src="./asset/eraser.png" alt="">
+                </button>
+                <span class="toolList">지우개</span>
+            </div>
+            <div class="toolName">
+                <button id="fill">
+                    <img src="./asset/fill.png" alt="">
+                </button>
+                <span class="toolList">채우기</span>
+            </div>
+            <div class="toolName">
+                <button id="reset">
+                    <img src="./asset/reload.png" alt="">
+                </button>
+                <span class="toolList">리셋</span>
+            </div>
+        </div>
     </header>
-    <div id="tool">
-        <button id="brush">
-            <img src="./asset/paint-brush.png" alt="">
-        </button>
-        <button id="eraser">
-            <img src="./asset/eraser.png" alt="">
-        </button>
-        <button id="fill">
-            <img src="./asset/fill.png" alt="">
-        </button>
-        <button id="reset">
-            <img src="./asset/reload.png" alt="">
-        </button>
-    </div>
     <main>
         <canvas id="canvas" width="600" height="700"></canvas>
     </main>
