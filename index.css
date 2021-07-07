@@ -1,0 +1,10 @@
+canvas {
+    border-radius: 24px;
+    background-color: white;
+}
+body {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
