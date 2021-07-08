@@ -9,7 +9,8 @@ body {
     flex-direction: row;
 }
 
-main {margin-left: 250px;
+main {
+    margin-left: 250px;
     display: flex;
     justify-content: center;
 }
@@ -30,6 +31,7 @@ header {
     flex-direction: column;
     background-color: rgb(170, 170, 170);
     border-radius: 10px;
+    width: 170px;
 }
 
 .toolList {
@@ -38,7 +40,8 @@ header {
     font-weight: 1000;
 }
 
-#size {
+a {
     font-size: large;
     font-weight: 1000;
+    width: 100px;
 }
