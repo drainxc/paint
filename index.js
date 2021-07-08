@@ -13,6 +13,7 @@ const elementToChange = document.getElementsByTagName("body")[0];
 const gradation = document.getElementById('gradation');
 const color = document.getElementById('jsColor');
 const square = document.getElementById('square');
+const save = document.getElementById('save');
 
 elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
 opacityNumber.innerHTML = 1000;
@@ -124,6 +125,14 @@ function gradationColor() {
     }
 }
 
+function saveTool() {
+    const image = canvas.toDataURL();
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "PaintEastcopper";
+    link.click();
+}
+
 for (let i = 0; i < color.children.length; i++) {
     color.children[i].addEventListener('click', function () {
         ctx.strokeStyle = color.children[i].style.backgroundColor;
@@ -143,4 +152,5 @@ brush.addEventListener('click', brushTool);
 fill.addEventListener('click', fillTool);
 reset.addEventListener('click', resetTool);
 gradation.addEventListener('click', gradationTool);
-square.addEventListener('click', squareTool)
+square.addEventListener('click', squareTool);
+save.addEventListener('click', saveTool);
