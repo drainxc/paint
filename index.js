@@ -90,53 +90,7 @@ function opacityControl() {
     opacityNumber.innerHTML = `${opacityFigures * 1000}`;
 }
 
-function redColor() {
-    ctx.strokeStyle = "red";
-    nowColor = "red";
-    gradationColor();
-}
 
-function orangeColor() {
-    ctx.strokeStyle = "orange";
-    nowColor = "orange";
-    gradationColor();
-}
-
-function yellowColor() {
-    ctx.strokeStyle = "yellow";
-    nowColor = "yellow";
-    gradationColor();
-}
-
-function greenColor() {
-    ctx.strokeStyle = "greenyellow";
-    nowColor = "greenyellow";
-    gradationColor();
-}
-
-function blueColor() {
-    ctx.strokeStyle = "blue";
-    nowColor = "blue";
-    gradationColor();
-}
-
-function whiteColor() {
-    ctx.strokeStyle = "whitesmoke";
-    nowColor = "whitesmoke";
-    gradationColor();
-}
-
-function purpleColor() {
-    ctx.strokeStyle = "purple";
-    nowColor = "purple";
-    gradationColor();
-}
-
-function blackColor() {
-    ctx.strokeStyle = "black";
-    nowColor = "black";
-    gradationColor();
-}
 
 function gradationTool() {
     alert('두 개의 색깔을 정해주세요.');
@@ -145,11 +99,11 @@ function gradationTool() {
 }
 
 function gradationColor() {
-    if(num == 1) {
+    if (num == 1) {
         firstColor = nowColor
         num++;
     }
-    else if(num == 2) {
+    else if (num == 2) {
         secondColor = nowColor
         let gra = ctx.createLinearGradient(0, 0, 600, 700);
         gra.addColorStop(0.2, firstColor);
@@ -172,11 +126,10 @@ brush.addEventListener('click', brushTool);
 fill.addEventListener('click', fillTool);
 reset.addEventListener('click', resetTool);
 gradation.addEventListener('click', gradationTool);
-red.addEventListener('click', redColor);
-orange.addEventListener('click', orangeColor);
-yellow.addEventListener('click', yellowColor);
-green.addEventListener('click', greenColor);
-blue.addEventListener('click', blueColor);
-white.addEventListener('click', whiteColor);
-purple.addEventListener('click', purpleColor);
-black.addEventListener('click', blackColor);
+for (let i = 0; i < color.children.length; i++) {
+    color.children[i].addEventListener('click', function () {
+        ctx.strokeStyle = color.children[i].style.backgroundColor;
+        nowColor = color.children[i].style.backgroundColor;
+        gradationColor();
+    })
+}
