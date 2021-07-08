@@ -1,3 +1,4 @@
+  
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const brushControl = document.getElementById('brushControl');
@@ -9,13 +10,23 @@ const eraser = document.getElementById('eraser');
 const fill = document.getElementById('fill');
 const reset = document.getElementById('reset');
 const elementToChange = document.getElementsByTagName("body")[0];
+const red = document.getElementById('red');
+const orange = document.getElementById('orange');
+const yellow = document.getElementById('yellow');
+const green = document.getElementById('green');
+const blue = document.getElementById('blue');
+const indigo = document.getElementById('indigo');
+const purple = document.getElementById('purple');
+const black = document.getElementById('black');
+
 elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
 
 opacityNumber.innerHTML = `${document.getElementById('opacity').value}`;
 size.innerHTML = `${document.getElementById('brushControl').value}`;
 canvas.width = 600;
 canvas.height = 700;
-ctx.strokeStyle = "black";
+nowColor = "black"
+ctx.strokeStyle = nowColor;
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, 600, 700);
 let painting = false;
@@ -50,18 +61,16 @@ function range() {
 
 function eraserTool() {
     ctx.strokeStyle = "white";
-    ctx.fillStyle = "white";
     elementToChange.style.cursor = "url('./asset/eraser.png'), auto";
 }
 
 function brushTool() {
-    ctx.strokeStyle = "black";
-    ctx.fillStyle = "black";
+    ctx.strokeStyle = nowColor;
     elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
 }
 
 function fillTool() {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = nowColor;
     ctx.fillRect(0, 0, 600, 700);
 }
 
@@ -74,6 +83,46 @@ function opacityControl() {
     const opacityFigures = document.getElementById('opacity').value / 100;
     ctx.globalAlpha = opacityFigures;
     opacityNumber.innerHTML = `${opacityFigures * 100}`;
+}
+
+function redColor() {
+    ctx.strokeStyle = "red";
+    nowColor = "red";
+}
+
+function orangeColor() {
+    ctx.strokeStyle = "orange";
+    nowColor = "orange";
+}
+
+function yellowColor() {
+    ctx.strokeStyle = "yellow";
+    nowColor = "yellow";
+}
+
+function greenColor() {
+    ctx.strokeStyle = "green";
+    nowColor = "green";
+}
+
+function blueColor() {
+    ctx.strokeStyle = "blue";
+    nowColor = "blue";
+}
+
+function indigoColor() {
+    ctx.strokeStyle = "indigo";
+    nowColor = "indigo";
+}
+
+function purpleColor() {
+    ctx.strokeStyle = "purple";
+    nowColor = "purple";
+}
+
+function blackColor() {
+    ctx.strokeStyle = "black";
+    nowColor = "black";
 }
 
 // var gra = ctx.createLinearGradient(0,0,600,700); 
@@ -92,3 +141,11 @@ eraser.addEventListener('click', eraserTool);
 brush.addEventListener('click', brushTool);
 fill.addEventListener('click', fillTool);
 reset.addEventListener('click', resetTool);
+red.addEventListener('click', redColor);
+orange.addEventListener('click', orangeColor);
+yellow.addEventListener('click', yellowColor);
+green.addEventListener('click', greenColor);
+blue.addEventListener('click', blueColor);
+indigo.addEventListener('click', indigoColor);
+purple.addEventListener('click', purpleColor);
+black.addEventListener('click', blackColor);
