@@ -12,7 +12,7 @@
 <body>
     <header>
         <div>
-            <input id="brushControl" value="0" type="range">
+            <input id="brushControl" value="1" type="range">
             <a id="size"></a>
         </div>
         <div>
@@ -31,6 +31,12 @@
                     <img src="./asset/eraser.png" alt="">
                 </button>
                 <span class="toolList">지우개</span>
+            </div>
+            <div class="toolName">
+                <button id="square">
+                    <img src="./asset/square.png" alt="">
+                </button>
+                <span class="toolList">사각형</span>
             </div>
             <div class="toolName">
                 <button id="fill">
@@ -56,14 +62,14 @@
         <canvas id="canvas" width="600" height="700"></canvas>
     </main>
     <article id="jsColor">
-        <div id="red" class="color" style="background-color: red"></div>
-        <div id="orange" class="color" style="background-color: orange"></div>
-        <div id="yellow" class="color" style="background-color: yellow"></div>
-        <div id="green" class="color" style="background-color: yellowgreen"></div>
-        <div id="blue" class="color" style="background-color: blue"></div>
-        <div id="purple" class="color" style="background-color: violet"></div>
-        <div id="black" class="color" style="background-color: black"></div>
-        <div id="white" class="color" style="background-color: whitesmoke"></div>
+        <div class="color" style="background-color: red"></div>
+        <div class="color" style="background-color: orange"></div>
+        <div class="color" style="background-color: yellow"></div>
+        <div class="color" style="background-color: yellowgreen"></div>
+        <div class="color" style="background-color: blue"></div>
+        <div class="color" style="background-color: violet"></div>
+        <div class="color" style="background-color: black"></div>
+        <div class="color" style="background-color: whitesmoke"></div>
     </article>
 
     <script src="./index.js"></script>

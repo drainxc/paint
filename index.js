@@ -10,32 +10,25 @@ const eraser = document.getElementById('eraser');
 const fill = document.getElementById('fill');
 const reset = document.getElementById('reset');
 const elementToChange = document.getElementsByTagName("body")[0];
-const red = document.getElementById('red');
-const orange = document.getElementById('orange');
-const yellow = document.getElementById('yellow');
-const green = document.getElementById('green');
-const blue = document.getElementById('blue');
-const white = document.getElementById('white');
-const purple = document.getElementById('purple');
-const black = document.getElementById('black');
 const gradation = document.getElementById('gradation');
 const color = document.getElementById('jsColor');
+const square = document.getElementById('square');
 
 elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
-
 opacityNumber.innerHTML = 1000;
 size.innerHTML = `${document.getElementById('brushControl').value}`;
 canvas.width = 600;
 canvas.height = 700;
-nowColor = "black"
+let nowColor = "black"
 ctx.strokeStyle = nowColor;
-ctx.fillStyle = "white";
-ctx.fillRect(0, 0, 600, 700);
 let painting = false;
-ctx.lineWidth = 10;
+ctx.lineWidth = 1;
 let num = 0;
 let firstColor = nowColor;
 let secondColor = nowColor;
+ctx.font = "50px Comic Sans MS";
+ctx.strokeText("Canvas", 220, 100);
+let shapes = false;
 
 function start() {
     painting = true;
@@ -48,20 +41,30 @@ function stop() {
 function onMove(event) {
     const x = event.offsetX;
     const y = event.offsetY;
-    if (!painting) {
-        ctx.beginPath();
-        ctx.moveTo(x, y);
+    if (!shapes) {
+        if (!painting) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+        else {
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
     }
     else {
-        ctx.lineTo(x, y);
-        ctx.stroke();
+        if (!painting) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+        else {
+            ctx.strokeRect(x, y, 100, 100)
+        }
     }
 }
 
 function range() {
-    const brushSize = document.getElementById('brushControl').value / 4;
-    ctx.lineWidth = brushSize;
-    size.innerHTML = `${brushSize * 4}`;
+    ctx.lineWidth = document.getElementById('brushControl').value / 4;
+    size.innerHTML = `${document.getElementById('brushControl').value}`;
 }
 
 function eraserTool() {
@@ -80,22 +83,28 @@ function fillTool() {
 }
 
 function resetTool() {
+    ctx.globalAlpha = 1;
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, 600, 700);
+    ctx.globalAlpha = document.getElementById('opacity').value / 100;
+    ctx.lineWidth = 1;
+    ctx.strokeText("Canvas", 220, 100);
+    ctx.lineWidth = document.getElementById('brushControl').value / 4;
 }
 
 function opacityControl() {
-    const opacityFigures = document.getElementById('opacity').value / 100;
-    ctx.globalAlpha = opacityFigures;
-    opacityNumber.innerHTML = `${opacityFigures * 1000}`;
+    ctx.globalAlpha = document.getElementById('opacity').value / 100;
+    opacityNumber.innerHTML = `${document.getElementById('opacity').value / 100 * 1000}`;
 }
-
-
 
 function gradationTool() {
     alert('두 개의 색깔을 정해주세요.');
     num = 1;
     elementToChange.style.cursor = "url('./asset/gradation.png'), auto";
+}
+
+function squareTool() {
+    shapes = true;
 }
 
 function gradationColor() {
@@ -115,6 +124,14 @@ function gradationColor() {
     }
 }
 
+for (let i = 0; i < color.children.length; i++) {
+    color.children[i].addEventListener('click', function () {
+        ctx.strokeStyle = color.children[i].style.backgroundColor;
+        nowColor = color.children[i].style.backgroundColor;
+        gradationColor();
+    })
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", start);
 canvas.addEventListener("mouseup", stop);
@@ -126,10 +143,4 @@ brush.addEventListener('click', brushTool);
 fill.addEventListener('click', fillTool);
 reset.addEventListener('click', resetTool);
 gradation.addEventListener('click', gradationTool);
-for (let i = 0; i < color.children.length; i++) {
-    color.children[i].addEventListener('click', function () {
-        ctx.strokeStyle = color.children[i].style.backgroundColor;
-        nowColor = color.children[i].style.backgroundColor;
-        gradationColor();
-    })
-}
+square.addEventListener('click', squareTool)
