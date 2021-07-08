@@ -11,6 +11,7 @@ body {
 
 main {
     margin-left: 250px;
+    margin-right: 180px;
     display: flex;
     justify-content: center;
 }
@@ -44,4 +45,47 @@ a {
     font-size: large;
     font-weight: 1000;
     width: 100px;
+}
+
+.color {
+    width: 50px;
+    height: 50px;
+    border-radius: 24px;
+    display: inline-flex;
+}
+
+article {
+    margin-top: 50px;
+}
+
+#red {
+    background-color: red;
+}
+
+#orange {
+    background-color: orange;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#green {
+    background-color: greenyellow;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#indigo {
+    background-color: indigo;
+}
+
+#purple {
+    background-color: purple;
+}
+
+#black {
+    background-color: black;
 }

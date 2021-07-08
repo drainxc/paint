@@ -76,6 +76,12 @@ function opacityControl() {
     opacityNumber.innerHTML = `${opacityFigures * 100}`;
 }
 
+// var gra = ctx.createLinearGradient(0,0,600,700); 
+//             gra.addColorStop(0.5, 'black');
+//             gra.addColorStop(1, 'blue');
+//             ctx.fillStyle = gra;
+//             ctx.fillRect(0,0,600,700);
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", start);
 canvas.addEventListener("mouseup", stop);
