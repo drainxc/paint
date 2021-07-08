@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>그림판</title>
     <link rel="stylesheet" href="./index.css">
+    <style>
+        .photoFrame {
+            width: 410px;
+            height: 485px;
+        }
+
+        .photoFrame:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -67,15 +77,24 @@
     <main>
         <canvas id="canvas" width="600" height="700"></canvas>
     </main>
-    <article id="jsColor">
-        <div class="color" style="background-color: red"></div>
-        <div class="color" style="background-color: orange"></div>
-        <div class="color" style="background-color: yellow"></div>
-        <div class="color" style="background-color: yellowgreen"></div>
-        <div class="color" style="background-color: blue"></div>
-        <div class="color" style="background-color: violet"></div>
-        <div class="color" style="background-color: black"></div>
-        <div class="color" style="background-color: whitesmoke"></div>
+    <article>
+        <div id="Colors">
+            <div id="jsColor">
+                <div class="color" style="background-color: red"></div>
+                <div class="color" style="background-color: orange"></div>
+                <div class="color" style="background-color: yellow"></div>
+                <div class="color" style="background-color: yellowgreen"></div>
+                <div class="color" style="background-color: blue"></div>
+                <div class="color" style="background-color: violet"></div>
+                <div class="color" style="background-color: black"></div>
+                <div class="color" style="background-color: whitesmoke"></div>
+            </div>
+        </div>
+        <div id="picture">
+            <input type="file" id="fileInput">
+            <div id="pictures"></div>
+        </div>
+
     </article>
 
     <script src="./index.js"></script>

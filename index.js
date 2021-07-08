@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const brushControl = document.getElementById('brushControl');
@@ -20,6 +19,8 @@ opacityNumber.innerHTML = 1000;
 size.innerHTML = `${document.getElementById('brushControl').value}`;
 canvas.width = 600;
 canvas.height = 700;
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, 600, 700);
 let nowColor = "black"
 ctx.strokeStyle = nowColor;
 let painting = false;
@@ -43,7 +44,7 @@ function onMove(event) {
     const x = event.offsetX;
     const y = event.offsetY;
     if (!shapes) {
-        if (!painting) {
+        if (!painting || num >= 1) {
             ctx.beginPath();
             ctx.moveTo(x, y);
         }
@@ -69,11 +70,13 @@ function range() {
 }
 
 function eraserTool() {
+    shapes = false;
     ctx.strokeStyle = "white";
     elementToChange.style.cursor = "url('./asset/eraser.png'), auto";
 }
 
 function brushTool() {
+    shapes = false;
     ctx.strokeStyle = nowColor;
     elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
 }
@@ -86,11 +89,13 @@ function fillTool() {
 function resetTool() {
     ctx.globalAlpha = 1;
     ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
     ctx.fillRect(0, 0, 600, 700);
     ctx.globalAlpha = document.getElementById('opacity').value / 100;
     ctx.lineWidth = 1;
     ctx.strokeText("Canvas", 220, 100);
     ctx.lineWidth = document.getElementById('brushControl').value / 4;
+    ctx.strokeStyle = nowColor;
 }
 
 function opacityControl() {
@@ -105,7 +110,9 @@ function gradationTool() {
 }
 
 function squareTool() {
+    ctx.strokeStyle = nowColor;
     shapes = true;
+    elementToChange.style.cursor = "url('./asset/square.png'), auto";
 }
 
 function gradationColor() {
@@ -140,6 +147,25 @@ for (let i = 0; i < color.children.length; i++) {
         gradationColor();
     })
 }
+
+var fileInput = document.getElementById("fileInput");
+fileInput.addEventListener('change', function (e) {
+    var file = e.target.files[0]; //선택된 파일
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = function () {
+        var photoFrame = document.createElement("div");
+        photoFrame.style = `background : url(${reader.result}) no-repeat; background-size : contain;`;
+        photoFrame.className = "photoFrame";
+        document.getElementById("pictures").appendChild(photoFrame);
+        e.target.value = "";
+
+        photoFrame.addEventListener("click", function () {
+            document.getElementById("pictures").removeChild(photoFrame);
+        })
+    }
+})
 
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", start);
