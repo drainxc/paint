@@ -1,4 +1,4 @@
-  
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const brushControl = document.getElementById('brushControl');
@@ -15,13 +15,15 @@ const orange = document.getElementById('orange');
 const yellow = document.getElementById('yellow');
 const green = document.getElementById('green');
 const blue = document.getElementById('blue');
-const indigo = document.getElementById('indigo');
+const white = document.getElementById('white');
 const purple = document.getElementById('purple');
 const black = document.getElementById('black');
+const gradation = document.getElementById('gradation');
+const color = document.getElementById('jsColor');
 
 elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
 
-opacityNumber.innerHTML = `${document.getElementById('opacity').value}`;
+opacityNumber.innerHTML = 1000;
 size.innerHTML = `${document.getElementById('brushControl').value}`;
 canvas.width = 600;
 canvas.height = 700;
@@ -31,6 +33,9 @@ ctx.fillStyle = "white";
 ctx.fillRect(0, 0, 600, 700);
 let painting = false;
 ctx.lineWidth = 10;
+let num = 0;
+let firstColor = nowColor;
+let secondColor = nowColor;
 
 function start() {
     painting = true;
@@ -82,54 +87,79 @@ function resetTool() {
 function opacityControl() {
     const opacityFigures = document.getElementById('opacity').value / 100;
     ctx.globalAlpha = opacityFigures;
-    opacityNumber.innerHTML = `${opacityFigures * 100}`;
+    opacityNumber.innerHTML = `${opacityFigures * 1000}`;
 }
 
 function redColor() {
     ctx.strokeStyle = "red";
     nowColor = "red";
+    gradationColor();
 }
 
 function orangeColor() {
     ctx.strokeStyle = "orange";
     nowColor = "orange";
+    gradationColor();
 }
 
 function yellowColor() {
     ctx.strokeStyle = "yellow";
     nowColor = "yellow";
+    gradationColor();
 }
 
 function greenColor() {
-    ctx.strokeStyle = "green";
-    nowColor = "green";
+    ctx.strokeStyle = "greenyellow";
+    nowColor = "greenyellow";
+    gradationColor();
 }
 
 function blueColor() {
     ctx.strokeStyle = "blue";
     nowColor = "blue";
+    gradationColor();
 }
 
-function indigoColor() {
-    ctx.strokeStyle = "indigo";
-    nowColor = "indigo";
+function whiteColor() {
+    ctx.strokeStyle = "whitesmoke";
+    nowColor = "whitesmoke";
+    gradationColor();
 }
 
 function purpleColor() {
     ctx.strokeStyle = "purple";
     nowColor = "purple";
+    gradationColor();
 }
 
 function blackColor() {
     ctx.strokeStyle = "black";
     nowColor = "black";
+    gradationColor();
 }
 
-// var gra = ctx.createLinearGradient(0,0,600,700); 
-//             gra.addColorStop(0.5, 'black');
-//             gra.addColorStop(1, 'blue');
-//             ctx.fillStyle = gra;
-//             ctx.fillRect(0,0,600,700);
+function gradationTool() {
+    alert('두 개의 색깔을 정해주세요.');
+    num = 1;
+    elementToChange.style.cursor = "url('./asset/gradation.png'), auto";
+}
+
+function gradationColor() {
+    if(num == 1) {
+        firstColor = nowColor
+        num++;
+    }
+    else if(num == 2) {
+        secondColor = nowColor
+        let gra = ctx.createLinearGradient(0, 0, 600, 700);
+        gra.addColorStop(0.2, firstColor);
+        gra.addColorStop(1, secondColor);
+        ctx.fillStyle = gra;
+        ctx.fillRect(0, 0, 600, 700);
+        num = 0;
+        elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
+    }
+}
 
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", start);
@@ -141,11 +171,12 @@ eraser.addEventListener('click', eraserTool);
 brush.addEventListener('click', brushTool);
 fill.addEventListener('click', fillTool);
 reset.addEventListener('click', resetTool);
+gradation.addEventListener('click', gradationTool);
 red.addEventListener('click', redColor);
 orange.addEventListener('click', orangeColor);
 yellow.addEventListener('click', yellowColor);
 green.addEventListener('click', greenColor);
 blue.addEventListener('click', blueColor);
-indigo.addEventListener('click', indigoColor);
+white.addEventListener('click', whiteColor);
 purple.addEventListener('click', purpleColor);
 black.addEventListener('click', blackColor);

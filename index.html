@@ -16,7 +16,7 @@
             <a id="size"></a>
         </div>
         <div>
-            <input id="opacity" type="range" value="100">
+            <input id="opacity" type="range" value="1000">
             <a id="opacityNumber"></a>
         </div>
         <div id="tool">
@@ -39,6 +39,12 @@
                 <span class="toolList">채우기</span>
             </div>
             <div class="toolName">
+                <button id="gradation">
+                    <img src="./asset/gradation.png" alt="">
+                </button>
+                <span class="toolList">그라데이션</span>
+            </div>
+            <div class="toolName">
                 <button id="reset">
                     <img src="./asset/reload.png" alt="">
                 </button>
@@ -49,7 +55,7 @@
     <main>
         <canvas id="canvas" width="600" height="700"></canvas>
     </main>
-    <article>
+    <article id="jsColor">
         <div>
             <div id="red" class="color"></div>
             <div id="orange" class="color"></div>
@@ -58,9 +64,9 @@
         </div>
         <div>
             <div id="blue" class="color"></div>
-            <div id="indigo" class="color"></div>
             <div id="purple" class="color"></div>
             <div id="black" class="color"></div>
+            <div id="white" class="color"></div>
         </div>
 
     </article>
