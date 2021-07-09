@@ -1,10 +1,11 @@
 canvas {
     border-radius: 24px;
     background-color: white;
+    margin-left: 3px;
 }
 
 body {
-    background-color: gainsboro;
+    background-color: rgb(234, 251, 255);
     display: flex;
 }
 
@@ -41,13 +42,12 @@ a {
 
 .color {
     margin-top: 5px ;
-    margin-left: 15px;
+    margin-left: 14px;
     width: 45px;
-    height: 45px;
+    height: 47px;
     border: 0px;
     border-radius: 24px;
     display: inline-flex;
-    border: 1px solid black;
 }
 
 img {
@@ -60,7 +60,7 @@ img {
     margin-top: 75px;
     background-color: white;
     height: 227px;
-    width: 350px;
+    width: 330px;
     border-radius: 24px;
 }
 
@@ -71,11 +71,13 @@ img {
 #mainTool {
     display: inline-flex;
     flex-wrap: wrap;
+    height: 700px;
+    width: 600px;
 }
 
 .photoFrame {
     width: 500px;
-    height: 330px;
+    height: 290px;
 }
 
 .photoFrame:hover {
@@ -83,6 +85,50 @@ img {
 }
 
 #notImg {
-    width: 500px;
-    height: 330px;
+    width: 400px;
+    height: 290px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#fileInput {
+    display: none;
+}
+
+#upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 25px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    border: 1px solid skyblue; 
+    background-color: white; 
+    color: skyblue; 
+    padding: 5px;
+    font-weight: bolder;
+}
+
+#upload:hover {
+    background-color: skyblue;
+    color: white;
+}
+
+input[type="range"] { 
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 19px;
+    width: 130px;
+    cursor: pointer;
+}
+
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1px;
+    height: 1px;
+    background: dodgerblue;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
     <main>
         <canvas id="canvas" width="900" height="700"></canvas>
     </main>
@@ -84,7 +84,7 @@
                     <div class="color" style="background-color: aqua"></div>
                     <div class="color" style="background-color: turquoise"></div>
                     <div class="color" style="background-color: blue"></div>
-                    <div class="color" style="background-color:navy"></div>
+                    <div class="color" style="background-color: navy"></div>
                     <div class="color" style="background-color: blueviolet"></div>
                     <div class="color" style="background-color: purple"></div>
                     <div class="color" style="background-color: burlywood"></div>
@@ -96,6 +96,7 @@
             </div>
         </article>
         <div id="picture">
+            <div id="upload">파일 열기</div>
             <input type="file" id="fileInput">
             <div id="pictures">
                 <img id="notImg" src="./asset/notImg.jpg" alt="">

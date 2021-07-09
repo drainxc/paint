@@ -149,15 +149,21 @@ for (let i = 0; i < color.children.length; i++) {
     })
 }
 
-var fileInput = document.getElementById("fileInput");
+let fileInput = document.getElementById("fileInput");
+const upload = document.getElementById('upload');
+upload.addEventListener('click', function() {
+    fileInput.click();
+})
+
+
 fileInput.addEventListener('change', function (e) {
-    var file = e.target.files[0]; //선택된 파일
-    var reader = new FileReader();
+    let file = e.target.files[0]; //선택된 파일
+    let reader = new FileReader();
     reader.readAsDataURL(file);
 
     reader.onload = function () {
         notImg.remove();
-        var photoFrame = document.createElement("div");
+        let photoFrame = document.createElement("div");
         photoFrame.style = `background : url(${reader.result}) no-repeat; background-size : contain;`;
         photoFrame.className = "photoFrame";
         document.getElementById("pictures").appendChild(photoFrame);
