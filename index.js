@@ -15,23 +15,25 @@ const square = document.getElementById('square');
 const save = document.getElementById('save');
 const notImg = document.getElementById('notImg');
 
-elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
+elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto"; // 커서 지정
 opacityNumber.innerHTML = 1000;
 size.innerHTML = `${document.getElementById('brushControl').value}`;
 canvas.width = 900;
-canvas.height = 700;
-ctx.fillStyle = "white";
-ctx.fillRect(0, 0, 900, 700);
-let nowColor = "black"
-ctx.strokeStyle = nowColor;
+canvas.height = 700; // 캔버스 크기 지정
+
 let painting = false;
-ctx.lineWidth = 1;
 let num = 0;
+let nowColor = "black" // 처음 색 지정
 let firstColor = nowColor;
 let secondColor = nowColor;
-ctx.font = "50px Comic Sans MS";
-ctx.strokeText("Canvas", 350, 100);
 let shapes = false;
+
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, 900, 700); // 캔버스 색 채우기
+ctx.strokeStyle = nowColor;
+ctx.lineWidth = 1; // 선 굵기
+ctx.font = "50px Comic Sans MS";
+ctx.strokeText("Canvas", 350, 100); // canvas 쓰기
 
 function start() {
     painting = true;
@@ -43,7 +45,7 @@ function stop() {
 
 function onMove(event) {
     const x = event.offsetX;
-    const y = event.offsetY;
+    const y = event.offsetY; // 좌표 지정
     if (!shapes) {
         if (!painting || num >= 1) {
             ctx.beginPath();
@@ -53,39 +55,39 @@ function onMove(event) {
             ctx.lineTo(x, y);
             ctx.stroke();
         }
-    }
+    } // 브러쉬 그리기
     else {
-        if (!painting) {
+        if (!painting || num >= 1) {
             ctx.beginPath();
             ctx.moveTo(x, y);
         }
         else {
             ctx.strokeRect(x, y, 100, 100)
         }
-    }
+    } // 사각형 그리기
 }
 
 function range() {
     ctx.lineWidth = document.getElementById('brushControl').value / 4;
-    size.innerHTML = `${document.getElementById('brushControl').value}`;
-}
+    size.innerHTML = `${document.getElementById('brushControl').value}`; // 굵기 띄우기
+} // 굵기 조정
 
 function eraserTool() {
     shapes = false;
     ctx.strokeStyle = "white";
     elementToChange.style.cursor = "url('./asset/eraser.png'), auto";
-}
+} // 지우개
 
 function brushTool() {
     shapes = false;
     ctx.strokeStyle = nowColor;
     elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
-}
+} // 브러쉬
 
 function fillTool() {
     ctx.fillStyle = nowColor;
     ctx.fillRect(0, 0, 900, 700);
-}
+} // 채우기
 
 function resetTool() {
     ctx.globalAlpha = 1;
@@ -97,24 +99,24 @@ function resetTool() {
     ctx.strokeText("Canvas", 350, 100);
     ctx.lineWidth = document.getElementById('brushControl').value / 4;
     ctx.strokeStyle = nowColor;
-}
+} // 리셋
 
 function opacityControl() {
     ctx.globalAlpha = document.getElementById('opacity').value / 100;
-    opacityNumber.innerHTML = `${document.getElementById('opacity').value / 100 * 1000}`;
-}
+    opacityNumber.innerHTML = `${document.getElementById('opacity').value / 100 * 1000}`; // 불투명도 띄우기
+} // 불투명도
 
 function gradationTool() {
     alert('두 개의 색깔을 정해주세요.');
     num = 1;
     elementToChange.style.cursor = "url('./asset/gradation.png'), auto";
-}
+} // 그라데이션
 
 function squareTool() {
     ctx.strokeStyle = nowColor;
     shapes = true;
     elementToChange.style.cursor = "url('./asset/square.png'), auto";
-}
+} // 사각형
 
 function gradationColor() {
     if (num == 1) {
@@ -131,7 +133,7 @@ function gradationColor() {
         num = 0;
         elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
     }
-}
+} // 그라데이션 컬러 두개 정하기
 
 function saveTool() {
     const image = canvas.toDataURL();
@@ -139,7 +141,7 @@ function saveTool() {
     link.href = image;
     link.download = "PaintEastcopper";
     link.click();
-}
+} // 그림 저장
 
 for (let i = 0; i < color.children.length; i++) {
     color.children[i].addEventListener('click', function () {
@@ -147,17 +149,17 @@ for (let i = 0; i < color.children.length; i++) {
         nowColor = color.children[i].style.backgroundColor;
         gradationColor();
     })
-}
+} // 색깔 지정
 
 let fileInput = document.getElementById("fileInput");
 const upload = document.getElementById('upload');
-upload.addEventListener('click', function() {
+upload.addEventListener('click', function () {
     fileInput.click();
-})
+}) // 파일 열기
 
 
 fileInput.addEventListener('change', function (e) {
-    let file = e.target.files[0]; //선택된 파일
+    let file = e.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(file);
 
@@ -173,7 +175,7 @@ fileInput.addEventListener('change', function (e) {
             document.getElementById("pictures").removeChild(photoFrame);
         })
     }
-})
+}) // 사진 띄우기
 
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", start);
