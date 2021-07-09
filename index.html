@@ -7,95 +7,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>그림판</title>
     <link rel="stylesheet" href="./index.css">
-    <style>
-        .photoFrame {
-            width: 410px;
-            height: 485px;
-        }
-
-        .photoFrame:hover {
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
-    <header>
-        <div>
-            <input id="brushControl" value="1" type="range">
-            <a id="size"></a>
-        </div>
-        <div>
-            <input id="opacity" type="range" value="1000">
-            <a id="opacityNumber"></a>
-        </div>
-        <div id="tool">
-            <div class="toolName">
-                <button id="brush">
-                    <img src="./asset/paint-brush.png" alt="">
-                </button>
-                <span class="toolList">브러시</span>
-            </div>
-            <div class="toolName">
-                <button id="eraser">
-                    <img src="./asset/eraser.png" alt="">
-                </button>
-                <span class="toolList">지우개</span>
-            </div>
-            <div class="toolName">
-                <button id="square">
-                    <img src="./asset/square.png" alt="">
-                </button>
-                <span class="toolList">사각형</span>
-            </div>
-            <div class="toolName">
-                <button id="fill">
-                    <img src="./asset/fill.png" alt="">
-                </button>
-                <span class="toolList">채우기</span>
-            </div>
-            <div class="toolName">
-                <button id="gradation">
-                    <img src="./asset/gradation.png" alt="">
-                </button>
-                <span class="toolList">그라데이션</span>
-            </div>
-            <div class="toolName">
-                <button id="reset">
-                    <img src="./asset/reload.png" alt="">
-                </button>
-                <span class="toolList">리셋</span>
-            </div>
-            <div class="toolName">
-                <button id="save">
-                    <img src="./asset/save.png" alt="">
-                </button>
-                <span class="toolList">저장하기</span>
-            </div>
-        </div>
-    </header>
     <main>
-        <canvas id="canvas" width="600" height="700"></canvas>
+        <canvas id="canvas" width="900" height="700"></canvas>
     </main>
-    <article>
-        <div id="Colors">
-            <div id="jsColor">
-                <div class="color" style="background-color: red"></div>
-                <div class="color" style="background-color: orange"></div>
-                <div class="color" style="background-color: yellow"></div>
-                <div class="color" style="background-color: yellowgreen"></div>
-                <div class="color" style="background-color: blue"></div>
-                <div class="color" style="background-color: violet"></div>
-                <div class="color" style="background-color: black"></div>
-                <div class="color" style="background-color: whitesmoke"></div>
+    <div id="mainTool">
+        <header>
+            <div>
+                <input id="brushControl" value="1" type="range">
+                <a id="size"></a>
             </div>
-        </div>
+            <div>
+                <input id="opacity" type="range" value="1000">
+                <a id="opacityNumber"></a>
+            </div>
+            <div id="tool">
+                <div class="toolName">
+                    <button id="brush">
+                        <img src="./asset/paint-brush.png" alt="">
+                    </button>
+                    <span class="toolList">브러시</span>
+                </div>
+                <div class="toolName">
+                    <button id="eraser">
+                        <img src="./asset/eraser.png" alt="">
+                    </button>
+                    <span class="toolList">지우개</span>
+                </div>
+                <div class="toolName">
+                    <button id="square">
+                        <img src="./asset/square.png" alt="">
+                    </button>
+                    <span class="toolList">사각형</span>
+                </div>
+                <div class="toolName">
+                    <button id="fill">
+                        <img src="./asset/fill.png" alt="">
+                    </button>
+                    <span class="toolList">채우기</span>
+                </div>
+                <div class="toolName">
+                    <button id="gradation">
+                        <img src="./asset/gradation.png" alt="">
+                    </button>
+                    <span class="toolList">그라데이션</span>
+                </div>
+                <div class="toolName">
+                    <button id="reset">
+                        <img src="./asset/reload.png" alt="">
+                    </button>
+                    <span class="toolList">리셋</span>
+                </div>
+                <div class="toolName">
+                    <button id="save">
+                        <img src="./asset/save.png" alt="">
+                    </button>
+                    <span class="toolList">저장하기</span>
+                </div>
+            </div>
+
+        </header>
+        <article>
+            <div id="Colors">
+                <div id="jsColor">
+                    <div class="color" style="background-color: hotpink"></div>
+                    <div class="color" style="background-color: red"></div>
+                    <div class="color" style="background-color: orange"></div>
+                    <div class="color" style="background-color: darkorange"></div>
+                    <div class="color" style="background-color: yellow"></div>
+                    <div class="color" style="background-color: springgreen"></div>
+                    <div class="color" style="background-color: yellowgreen"></div>
+                    <div class="color" style="background-color: green"></div>
+                    <div class="color" style="background-color: olive"></div>
+                    <div class="color" style="background-color: aqua"></div>
+                    <div class="color" style="background-color: turquoise"></div>
+                    <div class="color" style="background-color: blue"></div>
+                    <div class="color" style="background-color:navy"></div>
+                    <div class="color" style="background-color: blueviolet"></div>
+                    <div class="color" style="background-color: purple"></div>
+                    <div class="color" style="background-color: burlywood"></div>
+                    <div class="color" style="background-color: brown"></div>
+                    <div class="color" style="background-color: gray"></div>
+                    <div class="color" style="background-color: black"></div>
+                    <div class="color" style="background-color: whitesmoke"></div>
+                </div>
+            </div>
+        </article>
         <div id="picture">
             <input type="file" id="fileInput">
-            <div id="pictures"></div>
+            <div id="pictures">
+                <img id="notImg" src="./asset/notImg.jpg" alt="">
+            </div>
         </div>
-
-    </article>
+    </div>
 
     <script src="./index.js"></script>
 </body>

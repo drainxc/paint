@@ -13,14 +13,15 @@ const gradation = document.getElementById('gradation');
 const color = document.getElementById('jsColor');
 const square = document.getElementById('square');
 const save = document.getElementById('save');
+const notImg = document.getElementById('notImg');
 
 elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
 opacityNumber.innerHTML = 1000;
 size.innerHTML = `${document.getElementById('brushControl').value}`;
-canvas.width = 600;
+canvas.width = 900;
 canvas.height = 700;
 ctx.fillStyle = "white";
-ctx.fillRect(0, 0, 600, 700);
+ctx.fillRect(0, 0, 900, 700);
 let nowColor = "black"
 ctx.strokeStyle = nowColor;
 let painting = false;
@@ -29,7 +30,7 @@ let num = 0;
 let firstColor = nowColor;
 let secondColor = nowColor;
 ctx.font = "50px Comic Sans MS";
-ctx.strokeText("Canvas", 220, 100);
+ctx.strokeText("Canvas", 350, 100);
 let shapes = false;
 
 function start() {
@@ -83,17 +84,17 @@ function brushTool() {
 
 function fillTool() {
     ctx.fillStyle = nowColor;
-    ctx.fillRect(0, 0, 600, 700);
+    ctx.fillRect(0, 0, 900, 700);
 }
 
 function resetTool() {
     ctx.globalAlpha = 1;
     ctx.fillStyle = "white";
     ctx.strokeStyle = "black";
-    ctx.fillRect(0, 0, 600, 700);
+    ctx.fillRect(0, 0, 900, 700);
     ctx.globalAlpha = document.getElementById('opacity').value / 100;
     ctx.lineWidth = 1;
-    ctx.strokeText("Canvas", 220, 100);
+    ctx.strokeText("Canvas", 350, 100);
     ctx.lineWidth = document.getElementById('brushControl').value / 4;
     ctx.strokeStyle = nowColor;
 }
@@ -122,11 +123,11 @@ function gradationColor() {
     }
     else if (num == 2) {
         secondColor = nowColor
-        let gra = ctx.createLinearGradient(0, 0, 600, 700);
+        let gra = ctx.createLinearGradient(0, 0, 900, 700);
         gra.addColorStop(0.2, firstColor);
         gra.addColorStop(1, secondColor);
         ctx.fillStyle = gra;
-        ctx.fillRect(0, 0, 600, 700);
+        ctx.fillRect(0, 0, 900, 700);
         num = 0;
         elementToChange.style.cursor = "url('./asset/paint-brush.png'), auto";
     }
@@ -155,6 +156,7 @@ fileInput.addEventListener('change', function (e) {
     reader.readAsDataURL(file);
 
     reader.onload = function () {
+        notImg.remove();
         var photoFrame = document.createElement("div");
         photoFrame.style = `background : url(${reader.result}) no-repeat; background-size : contain;`;
         photoFrame.className = "photoFrame";
